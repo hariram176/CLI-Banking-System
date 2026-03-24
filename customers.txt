@@ -1,0 +1,1 @@
+Customer {userId = "hariram2006", username = "Hariram", password = "123", phone = "9361804273", balance = 8000}

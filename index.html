@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Banking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient Background Blobs -->
+    <div class="blob-container">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <div class="wrapper">
+        <!-- AUTHENTICATION CARD -->
+        <div id="auth-card" class="card animate-in">
+            <h1 class="glitch-text">SECURE PORTAL</h1>
+            <div class="tab-switcher">
+                <button id="btn-tab-login" class="active" onclick="switchTab('login')">Login</button>
+                <button id="btn-tab-reg" onclick="switchTab('reg')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form">
+                <div class="input-group">
+                    <input type="text" id="l-uid" required>
+                    <label>User ID</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="l-pass" required>
+                    <label>Password</label>
+                </div>
+                <button class="btn main-btn" onclick="handleLogin()">Sign In</button>
+            </div>
+
+            <!-- Register Form -->
+            <div id="reg-form" class="hidden">
+                <div class="input-group"><input type="text" id="r-uid" required><label>New User ID</label></div>
+                <div class="input-group"><input type="text" id="r-name" required><label>Full Name</label></div>
+                <div class="input-group"><input type="password" id="r-pass" required><label>Password</label></div>
+                <div class="input-group"><input type="text" id="r-phone" required><label>Phone Number</label></div>
+                <button class="btn main-btn" onclick="handleRegister()">Create Account</button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD CARD -->
+        <div id="dashboard" class="card hidden">
+            <div class="dash-header">
+                <h2>Welcome, <span id="display-name">User</span></h2>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+
+            <div class="balance-widget">
+                <p>Available Balance</p>
+                <h1 id="display-balance">$0.00</h1>
+            </div>
+
+            <div class="transaction-area">
+                <div class="input-group">
+                    <input type="number" id="tx-amount" required>
+                    <label>Amount ($)</label>
+                </div>
+                <div class="btn-grid">
+                    <button class="btn dep-btn" onclick="deposit()">Deposit</button>
+                    <button class="btn with-btn" onclick="requestWithdrawal()">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP MODAL -->
+    <div id="otp-modal" class="modal-overlay hidden">
+        <div class="modal card animate-pop">
+            <h3>Identity Verification</h3>
+            <p>Enter the 3-digit security code:</p>
+            <div class="otp-code" id="otp-display">000</div>
+            <input type="text" id="otp-input" maxlength="3" placeholder="---">
+            <p id="otp-status" class="error-text"></p>
+            <button class="btn main-btn" onclick="verifyOTP()">Verify & Confirm</button>
+            <button class="text-btn" onclick="closeOTP()">Cancel Transaction</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
